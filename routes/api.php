@@ -23,3 +23,6 @@ Route::apiResource('services', ServiceController::class)->only(['index', 'show']
 Route::apiResource('madrasahs', MadrasahController::class)->only(['index', 'show']);
 Route::apiResource('tempat-ibadahs', TempatIbadahController::class)->only(['index', 'show']);
 Route::get('stats', [MonthlyStatController::class, 'getStats']);
+
+use App\Http\Controllers\PernikahanController;
+Route::apiResource('pernikahans', PernikahanController::class);
