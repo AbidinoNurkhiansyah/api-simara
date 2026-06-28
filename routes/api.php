@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::apiResource('programs', ProgramController::class)->only(['index', 'show']);
 Route::apiResource('services', ServiceController::class)->only(['index', 'show']);
 Route::apiResource('madrasahs', MadrasahController::class)->only(['index', 'show']);
-Route::apiResource('tempat-ibadahs', TempatIbadahController::class)->only(['index', 'show']);
+Route::apiResource('tempat-ibadahs', TempatIbadahController::class);
 Route::get('stats', [MonthlyStatController::class, 'getStats']);
 
 use App\Http\Controllers\PernikahanController;
