@@ -17,6 +17,11 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Contracts\PernikahanRepositoryInterface::class,
             \App\Repositories\Eloquent\PernikahanRepository::class
         );
+
+        $this->app->bind(
+            \App\Repositories\Contracts\TempatIbadahRepositoryInterface::class,
+            \App\Repositories\Eloquent\TempatIbadahRepository::class
+        );
     }
 
     /**
