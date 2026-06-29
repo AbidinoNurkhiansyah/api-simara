@@ -32,6 +32,11 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Contracts\WakafRepositoryInterface::class,
             \App\Repositories\Eloquent\WakafRepository::class
         );
+
+        $this->app->bind(
+            \App\Repositories\Contracts\ProgramRepositoryInterface::class,
+            \App\Repositories\Eloquent\ProgramRepository::class
+        );
     }
 
     /**
