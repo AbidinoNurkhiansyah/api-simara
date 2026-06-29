@@ -8,6 +8,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\MadrasahController;
 use App\Http\Controllers\TempatIbadahController;
 use App\Http\Controllers\MonthlyStatController;
+use App\Http\Controllers\WakafController;
 
 use App\Http\Controllers\AuthController;
 
@@ -20,9 +21,10 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::apiResource('programs', ProgramController::class)->only(['index', 'show']);
 Route::apiResource('services', ServiceController::class)->only(['index', 'show']);
-Route::apiResource('madrasahs', MadrasahController::class)->only(['index', 'show']);
+Route::apiResource('madrasahs', MadrasahController::class);
 Route::apiResource('tempat-ibadahs', TempatIbadahController::class);
 Route::get('stats', [MonthlyStatController::class, 'getStats']);
+Route::apiResource('wakafs', WakafController::class);
 
 use App\Http\Controllers\PernikahanController;
 Route::apiResource('pernikahans', PernikahanController::class);
