@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             PernikahanSeeder::class,
             TempatIbadahSeeder::class,
             WakafSeeder::class,
+            ProgramSeeder::class,
         ]);
     }
 }
