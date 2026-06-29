@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 
-Route::apiResource('programs', ProgramController::class)->only(['index', 'show']);
+Route::apiResource('programs', ProgramController::class);
 Route::apiResource('services', ServiceController::class)->only(['index', 'show']);
 Route::apiResource('madrasahs', MadrasahController::class);
 Route::apiResource('tempat-ibadahs', TempatIbadahController::class);
