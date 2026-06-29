@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             AdminUserSeeder::class,
             PernikahanSeeder::class,
             TempatIbadahSeeder::class,
+            MadrasahSeeder::class,
             WakafSeeder::class,
             ProgramSeeder::class,
         ]);

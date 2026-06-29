@@ -13,7 +13,7 @@ class TempatIbadahSeeder extends Seeder
      */
     public function run(): void
     {
-        TempatIbadah::truncate();
+        TempatIbadah::query()->delete();
 
         $mapEmbed = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15862.939235216016!2d107.27991421389821!3d-6.2985368759253975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6977e688bc76a1%3A0x1c78d20df2a3a3b7!2sAl-Jihad%20Mosque!5e0!3m2!1sen!2sid!4v1782398760577!5m2!1sen!2sid";
 

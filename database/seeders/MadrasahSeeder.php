@@ -14,6 +14,7 @@ class MadrasahSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::table('madrasahs')->delete();
         $faker = Faker::create('id_ID');
 
         $levels = ['MI', 'MTs', 'MA'];
