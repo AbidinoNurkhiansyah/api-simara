@@ -1,0 +1,48 @@
+FROM php:8.2-cli
+
+# Install dependencies sistem dan ekstensi PHP
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    libpq-dev \
+    zip \
+    unzip \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Install ekstensi PHP untuk PostgreSQL
+RUN docker-php-ext-install pdo_pgsql mbstring exif pcntl bcmath gd
+
+# Install Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Set working directory
+WORKDIR /var/www
+
+# Copy file composer
+COPY composer.json composer.lock ./
+
+# Install dependencies aplikasi (dengan fallback ke source jika zip gagal di-download)
+RUN composer config -g preferred-install auto && \
+    composer install --no-scripts --no-autoloader || composer install --no-scripts --no-autoloader --prefer-source
+
+# Copy seluruh file aplikasi
+COPY . .
+
+# Pastikan folder cache/storage tersedia untuk Laravel
+RUN mkdir -p storage/framework/cache/data \
+    storage/framework/sessions \
+    storage/framework/views \
+    bootstrap/cache
+
+# Generate autoloader
+RUN composer dump-autoload --optimize
+
+# Beri akses write ke folder storage dan bootstrap/cache
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+
+EXPOSE 8000
+
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
